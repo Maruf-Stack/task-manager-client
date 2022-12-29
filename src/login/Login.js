@@ -41,9 +41,8 @@ const Login = () => {
             .then(result => {
                 const name = result.user.displayName;
                 const email = result.user.email;
-                const role = "user";
                 const user = {
-                    name, email, role
+                    name, email
                 }
                 console.log(user)
                 saveUserInfo(user)
@@ -58,7 +57,7 @@ const Login = () => {
     const saveUserInfo = (user) => {
         const email = user.email
 
-        fetch('https://resale-server-nine.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

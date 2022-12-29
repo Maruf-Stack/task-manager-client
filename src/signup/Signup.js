@@ -27,16 +27,34 @@ const Signup = () => {
                 reset()
                 navigate('/')
                 toast.success('User Created Successfully')
-                // updateUser(userInfo)
-                //     .then(() => {
-                //         saveBuyerInfo(data.name, data.email, data.role, data.password)
-                //     })
-                //     .catch(err => console.log(err));
+                updateUser(userInfo)
+                    .then(() => {
+                        saveBuyerInfo(data.name, data.email, data.password)
+                    })
+                    .catch(err => console.log(err));
             })
             .catch(error => {
                 console.log(error)
                 setSignUPError(error.message)
             });
+    }
+
+    const saveBuyerInfo = (name, email, password) => {
+        const user = { name, email, password }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setCreatedEmail(email)
+
+            })
+
     }
 
     const [showPassword, setShowPassword] = React.useState(false);
