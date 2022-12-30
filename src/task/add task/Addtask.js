@@ -49,8 +49,8 @@ const Addtask = () => {
     };
 
     return (
-        <div>
-            <p>Add task</p>
+        <div className='mt-8 lg:mt-14'>
+            <p className='mb-4 font-sans text-2xl text-center'>Add task</p>
             <div>
                 <form onSubmit={handleSubmit(handleMytask)} className='mx-5 mt-5 lg:mx-96 lg:mt-20'>
                     <div className='mb-5'>

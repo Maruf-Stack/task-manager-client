@@ -45,6 +45,7 @@ const Completedtask = () => {
             console.log(e.target.value)
             e.preventDefault()
             e.target.value = '';
+            toast.success('comment done')
 
         }
     };
