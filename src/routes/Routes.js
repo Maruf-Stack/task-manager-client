@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 import Home from "../home/Home/Home";
 import Main from "../layout/Main";
 import Login from "../login/Login";
@@ -7,7 +9,9 @@ import Addtask from "../task/add task/Addtask";
 import Completedtask from "../task/completed task/Completedtask";
 import Mytask from "../task/mytask/Mytask";
 import Private from "./Private";
+
 export const router = createBrowserRouter([
+
     {
         path: '/',
         element: <Main></Main>,

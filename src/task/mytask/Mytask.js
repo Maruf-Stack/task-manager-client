@@ -15,7 +15,7 @@ const Mytask = () => {
         queryKey: ['mytask'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/mytask/${user?.email}`);
+                const res = await fetch(`https://task-app-server-xi.vercel.app/mytask/${user?.email}`);
                 const data = await res.json()
                 return data
             }
@@ -25,22 +25,24 @@ const Mytask = () => {
         }
     })
     const handleDeletetask = task => {
-        fetch(`http://localhost:5000/mytask/${task._id}`, {
+        fetch(`https://task-app-server-xi.vercel.app/mytask/${task._id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
             .then(result => {
                 if (result.deletedCount > 0) {
-                    toast.success(`${task.name} deleted from your task`)
+                    toast.success(`${task.task} deleted from your task`)
                     refetch()
                 }
 
             })
     }
     const handleCompletetask = task => {
-        fetch('http://localhost:5000/completedtask', {
+        fetch('https://task-app-server-xi.vercel.app/completedtask', {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
+            headers: {
+                'content-type': 'application/json'
+            },
             body: JSON.stringify(task)
         })
             .then(res => res.json())
@@ -54,7 +56,7 @@ const Mytask = () => {
         return <Loading></Loading>
     }
     return (
-        <div className='mt-4 lg:mt-14'>
+        <div className='mt-8 lg:mt-14'>
             <p className='mb-4 font-sans text-2xl text-center'>My task</p>
             {
                 mytask.map((task, i) => <div key={i + 1} className='mb-8 text-center'>
@@ -64,7 +66,7 @@ const Mytask = () => {
                             Delete
                         </Button>
                         <Button size="small" variant='outlined' startIcon={<Edit></Edit>} sx={{ mr: '1ch' }}>Update</Button>
-                        <Button onClick={() => handleCompletetask(task)} startIcon={<Done></Done>} variant='outlined' size="small" color="success">Complete</Button>
+                        <Button onClick={() => { handleCompletetask(task); handleDeletetask(task) }} startIcon={<Done></Done>} variant='outlined' size="small" color="success">Complete</Button>
                     </div>
                 </div>)
             }

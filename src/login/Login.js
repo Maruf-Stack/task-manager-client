@@ -57,7 +57,7 @@ const Login = () => {
     const saveUserInfo = (user) => {
         const email = user.email
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://task-app-server-xi.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

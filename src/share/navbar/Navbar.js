@@ -92,7 +92,7 @@ export default function Navbar(props) {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { md: 'none' } }}
                     >
 
                         <ListSharpIcon></ListSharpIcon>
@@ -104,7 +104,7 @@ export default function Navbar(props) {
                     >
                         Task manager
                     </Typography>
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                    <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                         {navItems.map((item, i) => (
                             <Button key={i + 1} sx={{ color: '#fff' }}>
                                 {item}
@@ -125,7 +125,7 @@ export default function Navbar(props) {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-                        display: { xs: 'block', sm: 'none' },
+                        display: { xs: 'block', sm: 'block', md: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
                 >
